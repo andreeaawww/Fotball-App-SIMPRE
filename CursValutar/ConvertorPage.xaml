@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Convertor"
+             x:Class="CursValutar.ConvertorPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Label Text="Converteste"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+            <Entry Placeholder="Suma de convertit"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   x:Name="EntrySumaDeConvertit"
+                   Keyboard="Numeric"/>
+            <Picker Title="Selectati valuta sursa"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   x:Name="PickerValutaSursa"/>
+            <Entry Placeholder="Rezultat conversie"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="2"
+                   Grid.Column="0"
+                   x:Name="EntryRezultatConversie"/>
+            <Label Text="Valoare convertita"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="3"
+                   Grid.Column="0"
+                   x:Name="LabelValoareConvertita"/>
+            <Picker Title="Selectati valoarea destinatie"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="3"
+                   Grid.Column="1"
+                   x:Name="PickerValoareDestinatie"/>
+            <Button Text="CONVERTESTE"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Clicked="Button_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
