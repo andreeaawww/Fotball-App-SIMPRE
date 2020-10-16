@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -25,7 +26,7 @@ namespace CursValutar.Services
 
             var response = restClient.Execute(request);
 
-            return response.Content.ToString();
+            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
 
         public dynamic GetAllLeagues()
@@ -36,7 +37,7 @@ namespace CursValutar.Services
 
             var response = restClient.Execute(request);
 
-            return response.Content.ToString();
+            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
 
         public dynamic GetLeagueByName(string country)
@@ -47,7 +48,7 @@ namespace CursValutar.Services
 
             var response = restClient.Execute(request);
 
-            return response.Content.ToString();
+            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
 
         public dynamic GetTeamsByLeagueId(string leagueId)
@@ -58,7 +59,7 @@ namespace CursValutar.Services
 
             var response = restClient.Execute(request);
 
-            return response.Content.ToString();
+            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
 
         public dynamic GetPlayerData(string playerName)
@@ -69,7 +70,7 @@ namespace CursValutar.Services
 
             var response = restClient.Execute(request);
 
-            return response.Content.ToString();
+            return JsonConvert.DeserializeObject<dynamic>(response.Content);
         }
 
     }
