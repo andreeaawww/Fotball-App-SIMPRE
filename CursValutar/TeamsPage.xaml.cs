@@ -56,7 +56,6 @@ namespace CursValutar
                
                 foreach (var team in JsonConvert.DeserializeObject<JArray>(response.Content))
                 {
-                    // Teams.Add(Team(team_id, team_name)) -- teamId; teamName
                     Teams.Add(new Team(
                         team["team_key"].ToString(),
                         team["team_name"].ToString(),

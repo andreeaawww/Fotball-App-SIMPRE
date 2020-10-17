@@ -9,7 +9,6 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-
                         <StackLayout
                             Orientation="Horizontal"
                             HorizontalOptions="FillAndExpand">
