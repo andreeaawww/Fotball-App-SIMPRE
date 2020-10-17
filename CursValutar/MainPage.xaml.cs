@@ -25,8 +25,8 @@ namespace CursValutar
 
         private void ToolbarItem_Clicked(object sender, EventArgs e)
         {
-             Shell.Current.GoToAsync("Setari");
         }
 
     }
 }
+ 

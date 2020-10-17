@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CursValutar.Istoric"
+             x:Class="CursValutar.ContactPage"
              xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             Title="Istoric">
+             Title="Project Team">
     <ContentPage.Content>
         <StackLayout>
-           <Label Text="Selectati valuta"
+           <Label Text="Team that worked on this project"
                 />
             <charts:ChartView x:Name="chartViewIstoric"
                      VerticalOptions="FillAndExpand"

@@ -9,7 +9,7 @@ namespace CursValutar
         public App()
         {
             InitializeComponent();
-            MainPage = new WelcomePage();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

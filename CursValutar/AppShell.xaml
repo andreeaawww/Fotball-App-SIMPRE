@@ -3,19 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:CursValutar"
              x:Class="CursValutar.AppShell">
-
-
-    <FlyoutItem Title="Despre">
+    <FlyoutItem Title="Football Application">
         <ShellContent>
-            <local:Despre/>
+            <local:AboutPage/>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="CountryPage">
+    <FlyoutItem Title="Countries">
         <ShellContent>
             <local:CountryPage/>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="Premier League Teams">
+    <FlyoutItem Title="League Teams">
         <ShellContent>
             <local:TeamsPage>
                 <x:Arguments>
@@ -24,9 +22,9 @@
             </local:TeamsPage>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="Istoric">
+    <FlyoutItem Title="Contact">
         <ShellContent>
-            <local:Istoric/>
+            <local:ContactPage/>
         </ShellContent>
     </FlyoutItem>
 </Shell>

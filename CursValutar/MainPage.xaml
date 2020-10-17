@@ -2,28 +2,12 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursValutar.MainPage"
-             Title="Curs valutar">
+             Title="Main Page">
     <ContentPage.ToolbarItems>
         <ToolbarItem Clicked="ToolbarItem_Clicked" Order="Secondary" Text="Setari">
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <StackLayout>
-        <Label Text="{Binding Data, StringFormat='Data cursului: {0}'}"/>
-        <ListView x:Name="listViewCurs">
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Image Source="{Binding ResursaDrapel}">
-                            </Image>
-                            <Label Text="{Binding Multiplicator}"></Label>
-                            <Label Text="{Binding Valuta, StringFormat='{0} = '}"></Label>
-                            <Label Text="{Binding Valoare, StringFormat='{0} RON'}"></Label>
-                        </StackLayout>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
     </StackLayout>
 
 </ContentPage>

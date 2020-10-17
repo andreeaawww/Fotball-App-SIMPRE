@@ -15,7 +15,6 @@ namespace CursValutar
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute("Setari", typeof(Setari));
         }
     }
 }

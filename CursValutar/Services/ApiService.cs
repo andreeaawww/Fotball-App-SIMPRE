@@ -40,17 +40,6 @@ namespace CursValutar.Services
             return response;
         }
 
-        public IRestResponse GetLeagueByName(string country)
-        {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&country_name={country}&APIkey={ApiKey}", Method.POST);
-
-            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
-
-            var response = restClient.Execute(request);
-
-            return response;
-        }
-
         public IRestResponse GetTeamsByLeagueId(string leagueId)
         {
             var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_teams&league_id={leagueId}&APIkey={ApiKey}", Method.POST);
@@ -64,7 +53,7 @@ namespace CursValutar.Services
 
         public IRestResponse GetPlayerData(string playerName)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_players&player_name=={playerName}&APIkey={ApiKey}", Method.POST);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_players&player_name={playerName}&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 

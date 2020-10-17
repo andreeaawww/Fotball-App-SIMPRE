@@ -1,4 +1,5 @@
-﻿using CursValutar.Services;
+﻿using CursValutar.Models;
+using CursValutar.Services;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -17,7 +18,7 @@ namespace CursValutar.Views
     public partial class LeaguesPage : ContentPage
     {
         private readonly ApiService apiService;
-        public List<string> Leagues = new List<string>();
+        public List<League> Leagues = new List<League>();
 
         public LeaguesPage(string CountryId)
         {
@@ -33,7 +34,13 @@ namespace CursValutar.Views
 
         private void SelectedItem(object sender, EventArgs e)
         {
+            var league = (League)leaguesListView.SelectedItem;
 
+            var leagueId = Leagues.Where(i => i.LeagueName == league.LeagueName).Select(i => i.LeagueId).FirstOrDefault();
+
+            var teamsPage = new TeamsPage(leagueId);
+
+            Navigation.PushAsync(teamsPage);
         }
 
         private async Task InitializeLeaguesListAsync(string CountryId)
@@ -46,7 +53,7 @@ namespace CursValutar.Views
                 {
                     do
                     {
-                        new CountryPage();
+                        new LeaguesPage(CountryId);
 
                         response = apiService.GetCountries();
 
@@ -55,7 +62,12 @@ namespace CursValutar.Views
                     if (response.StatusCode == HttpStatusCode.OK)
                         foreach (var league in JsonConvert.DeserializeObject<JArray>(response.Content))
                         {
-                            Leagues.Add(league["league_name"].ToString());
+                            Leagues.Add(new League()
+                            {
+                                LeagueName = league["league_name"].ToString(),
+                                LeagueFlag = league["league_logo"].ToString(),
+                                LeagueId = league["league_id"].ToString()
+                            });
                         }
 
                 }
@@ -63,7 +75,12 @@ namespace CursValutar.Views
                 {
                     foreach (var league in JsonConvert.DeserializeObject<JArray>(response.Content))
                     {
-                        Leagues.Add(league["league_name"].ToString());
+                        Leagues.Add(new League()
+                        {
+                            LeagueName = league["league_name"].ToString(),
+                            LeagueFlag = league["league_logo"].ToString(),
+                            LeagueId = league["league_id"].ToString()
+                        });
                     }
                 }
             }

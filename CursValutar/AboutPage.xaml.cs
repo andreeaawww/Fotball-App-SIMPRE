@@ -10,17 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace CursValutar
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class WelcomePage : ContentPage
+    public partial class AboutPage : ContentPage
     {
-        public WelcomePage()
+        public AboutPage()
         {
             InitializeComponent();
         }
-
-        public void WelcomeHandler(object sender, EventArgs e)
-        {
-            Application.Current.MainPage = new AppShell();
-        }
-
     }
 }

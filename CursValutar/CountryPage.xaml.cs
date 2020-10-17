@@ -1,4 +1,5 @@
-﻿using CursValutar.Services;
+﻿using CursValutar.Models;
+using CursValutar.Services;
 using CursValutar.Views;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -6,8 +7,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,8 +17,7 @@ namespace CursValutar
     public partial class CountryPage : ContentPage
     {
         private readonly ApiService apiService;
-        private List<string> Countries = new List<string>();
-        private Dictionary<string, int> CountriesIds = new Dictionary<string, int>();
+        private List<Country> Countries = new List<Country>();
 
         public CountryPage()
         {
@@ -30,39 +28,20 @@ namespace CursValutar
             InitializeCountriesAsync();
 
             countriesListView.ItemsSource = Countries;
-
-            
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-        }
-
-        
-    private void ViewLeaguesButtonHandler(object sender, EventArgs e)
-        {
-            var country = countriesListView.SelectedItem.ToString();
-
-            var CountryId = CountriesIds[country].ToString();
-
-            var leaguePage = new LeaguesPage(CountryId);
-
-            Navigation.PushAsync(leaguePage);
         }
 
         private void SelectedItem(object sender, EventArgs e)
         {
-            var country = countriesListView.SelectedItem.ToString();
+            var country = (Country)countriesListView.SelectedItem;
 
-            var CountryId = CountriesIds[country].ToString();
+            var CountryId = Countries.Where(i => i.CountryName == country.CountryName).Select(i => i.CountryId).FirstOrDefault();
 
             var leaguePage = new LeaguesPage(CountryId);
 
             Navigation.PushAsync(leaguePage);
         }
 
-        private async Task InitializeCountriesAsync()
+        private async void InitializeCountriesAsync()
         {
             try
             {
@@ -70,30 +49,37 @@ namespace CursValutar
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                   // await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
+                    await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
 
                     do
                     {
-                        new CountryPage();
-
                         response = apiService.GetCountries();
 
                     } while (response.StatusCode == HttpStatusCode.OK);
 
-                    if(response.StatusCode == HttpStatusCode.OK)
+                    if (response.StatusCode == HttpStatusCode.OK)
+                    {
                         foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
                         {
-                            Countries.Add(country["country_name"].ToString());
-                            CountriesIds.Add(country["country_name"].ToString(), Int32.Parse(country["country_id"].ToString()));
+                            Countries.Add(new Country
+                            {
+                                CountryName = country["country_name"].ToString(),
+                                CountryId = country["country_id"].ToString(),
+                                CountryFlag = country["country_logo"].ToString()
+                            });
                         }
-
+                    }
                 }
                 else 
                 {
                     foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
                     {
-                        Countries.Add(country["country_name"].ToString());
-                        CountriesIds.Add(country["country_name"].ToString(), Int32.Parse(country["country_id"].ToString()));
+                        Countries.Add(new Country
+                        {
+                            CountryName = country["country_name"].ToString(),
+                            CountryId = country["country_id"].ToString(),
+                            CountryFlag = country["country_logo"].ToString()
+                        });
                     }
                 }
             }catch(Exception e)

@@ -12,7 +12,17 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
+                                <Label x:Name="CountryName" Text="{Binding CountryName}" HorizontalOptions="FillAndExpand" FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                <Image x:Name="CountryFlag"
+                                       Source="{Binding CountryFlag}"
+                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       Aspect="AspectFill"
+                                       />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

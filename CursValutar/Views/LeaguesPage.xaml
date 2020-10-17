@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CursValutar.Views.LeaguesPage">
+             x:Class="CursValutar.Views.LeaguesPage"
+             Title="Country Leagues">
     <ContentPage.Content>
         <ListView x:Name="leaguesListView"
               HasUnevenRows="True" IsVisible="True" ItemSelected="SelectedItem">
@@ -10,7 +11,17 @@
                     <ViewCell>
                         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding LeagueName}" HorizontalOptions="FillAndExpand" FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                <Image x:Name="CountryFlag"
+                                       Source="{Binding LeagueFlag}"
+                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       Aspect="AspectFill"
+                                       />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
