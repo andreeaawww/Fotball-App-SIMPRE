@@ -3,6 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursValutar.Views.LeaguesPage">
     <ContentPage.Content>
-       
+        <ListView x:Name="leaguesListView"
+              HasUnevenRows="True" IsVisible="True" ItemSelected="SelectedItem">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>

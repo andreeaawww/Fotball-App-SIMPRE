@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using RestSharp;
+using System.Collections.Specialized;
 using System.Net;
 
 namespace CursValutar.Services
@@ -28,9 +29,9 @@ namespace CursValutar.Services
             return response;
         }
 
-        public IRestResponse GetAllLeagues(string country)
+        public IRestResponse GetAllLeagues(int countryId)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&APIkey={ApiKey}", Method.POST);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&country_id={countryId}&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 

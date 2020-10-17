@@ -6,16 +6,13 @@
              Padding="0, 20, 0, 20">
     <ContentPage.Content>
         <ListView x:Name="countriesListView"
-              HasUnevenRows="True" IsVisible="True">
+              HasUnevenRows="True" IsVisible="True" ItemSelected="SelectedItem">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
                             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                                 <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                                <Button Text="View Leagues" HorizontalOptions="FillAndExpand" Clicked="ViewLeaguesButtonHandler" />
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

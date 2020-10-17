@@ -19,6 +19,7 @@ namespace CursValutar
     {
         private readonly ApiService apiService;
         private List<string> Countries = new List<string>();
+        private Dictionary<string, int> CountriesIds = new Dictionary<string, int>();
 
         public CountryPage()
         {
@@ -29,6 +30,8 @@ namespace CursValutar
             InitializeCountriesAsync();
 
             countriesListView.ItemsSource = Countries;
+
+            
         }
 
         protected override void OnAppearing()
@@ -36,9 +39,27 @@ namespace CursValutar
             base.OnAppearing();
         }
 
-        private void ViewLeaguesButtonHandler(object sender, EventArgs e)
+        
+    private void ViewLeaguesButtonHandler(object sender, EventArgs e)
         {
-            //await Navigation.PushAsync(new LeaguesPage());
+            var country = countriesListView.SelectedItem.ToString();
+
+            var CountryId = CountriesIds[country].ToString();
+
+            var leaguePage = new LeaguesPage(CountryId);
+
+            Navigation.PushAsync(leaguePage);
+        }
+
+        private void SelectedItem(object sender, EventArgs e)
+        {
+            var country = countriesListView.SelectedItem.ToString();
+
+            var CountryId = CountriesIds[country].ToString();
+
+            var leaguePage = new LeaguesPage(CountryId);
+
+            Navigation.PushAsync(leaguePage);
         }
 
         private async Task InitializeCountriesAsync()
@@ -49,7 +70,7 @@ namespace CursValutar
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
+                   // await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
 
                     do
                     {
@@ -63,6 +84,7 @@ namespace CursValutar
                         foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
                         {
                             Countries.Add(country["country_name"].ToString());
+                            CountriesIds.Add(country["country_name"].ToString(), Int32.Parse(country["country_id"].ToString()));
                         }
 
                 }
@@ -71,6 +93,7 @@ namespace CursValutar
                     foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
                     {
                         Countries.Add(country["country_name"].ToString());
+                        CountriesIds.Add(country["country_name"].ToString(), Int32.Parse(country["country_id"].ToString()));
                     }
                 }
             }catch(Exception e)
