@@ -27,4 +27,14 @@
             <local:ContactPage/>
         </ShellContent>
     </FlyoutItem>
+    <FlyoutItem Title="Save Favourite Players">
+        <ShellContent>
+            <local:SelectFavouritePlayers/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Saved Players">
+        <ShellContent>
+            <local:SavedPlayers/>
+        </ShellContent>
+    </FlyoutItem>
 </Shell>

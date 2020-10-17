@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CursValutar.SelectFavouritePlayers">
+    <ContentPage.Content>
+        <Grid>
+            <Label>Insert a player's name below (last name + first name) (e.g. Ronaldo Cristiano)</Label>
+            <Entry Placeholder="Insert player name..."
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   x:Name="PlayerNameInput"
+                   Keyboard="Text"/>
+            <Button Text="Save Player Data"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   Clicked="Button_Clicked"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
