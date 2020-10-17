@@ -9,9 +9,28 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+
+                        <StackLayout
+                            Orientation="Horizontal"
+                            HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Tapped="TapGestureRecognizer_Tapped"
+                                    CommandParameter="{Binding teamKey}"/>
+                            </StackLayout.GestureRecognizers>
                             <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
-                                <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
+                                <Label Text="{Binding teamName}"
+                                       HorizontalOptions="FillAndExpand"
+                                       FontSize="Large"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                <Image x:Name="teamBadge"
+                                       Source="{Binding teamBadgeURL}"
+                                       AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AbsoluteLayout.LayoutFlags="All"
+                                       HorizontalOptions="EndAndExpand"
+                                       VerticalOptions="FillAndExpand"
+                                       Aspect="AspectFill"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>

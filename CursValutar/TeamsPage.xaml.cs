@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -18,7 +18,7 @@ namespace CursValutar
     public partial class TeamsPage : ContentPage
     {
         private readonly ApiService apiService;
-        private List<string> Teams = new List<string>();
+        private List<Team> Teams = new List<Team>();
         public TeamsPage()
         {
             InitializeComponent();
@@ -27,9 +27,6 @@ namespace CursValutar
         {
             InitializeComponent();
 
-
-            DisplayAlert(leagueId, "hello", "helloooo");
-
             apiService = new ApiService();
 
             AsyncGetLeagueTeams(leagueId);
@@ -37,7 +34,6 @@ namespace CursValutar
             teamsListView.ItemsSource = Teams;
 
         }
-
         private async Task AsyncGetLeagueTeams(string leagueId)
         {
             try
@@ -61,7 +57,11 @@ namespace CursValutar
                 foreach (var team in JsonConvert.DeserializeObject<JArray>(response.Content))
                 {
                     // Teams.Add(Team(team_id, team_name)) -- teamId; teamName
-                    Teams.Add(team["team_name"].ToString());
+                    Teams.Add(new Team(
+                        team["team_key"].ToString(),
+                        team["team_name"].ToString(),
+                        team["team_badge"].ToString()
+                    ));
                 }
             }
             catch (Exception e)
@@ -70,5 +70,10 @@ namespace CursValutar
             }
         }
 
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            var clickedTeamKey = ((TappedEventArgs)e).Parameter;
+            DisplayAlert("TODO:", "Redirect to" + clickedTeamKey.ToString() + "team details Page", "Cancel");
+        }
     }
 }
