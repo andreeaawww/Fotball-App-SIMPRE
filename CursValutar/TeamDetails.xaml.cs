@@ -18,8 +18,7 @@ namespace CursValutar
     {
 
         private readonly ApiService apiService;
-        private string CurrentTeam = "";
-        // private Team CurrentTeam = new Team();
+        private Team CurrentTeam = new Team();
 
         public TeamDetails()
         {
@@ -36,6 +35,7 @@ namespace CursValutar
             AsyncGetTeamDetails(teamKey);
 
             DisplayedTeam.BindingContext = CurrentTeam;
+            DisplayedPlayers.ItemsSource = CurrentTeam.getListOfPlayers();
         }
 
        private async Task AsyncGetTeamDetails(string teamkey)
@@ -59,14 +59,23 @@ namespace CursValutar
                 }
 
                 var team = JsonConvert.DeserializeObject<JArray>(response.Content)[0];
-               // var teamPlayers = new List<TeamPlayer>();
+                var teamPlayers = new List<TeamPlayer>();
 
-               /* CurrentTeam = new Team(
-                   team["team_key"].ToString(),
-                   team["team_name"].ToString(),
-                   team["team_badge"].ToString(),
-                   teamPlayers
-                ) ;*/
+                foreach (var player in team["players"])
+                {
+                    teamPlayers.Add(new TeamPlayer(
+                        player["player_key"].ToString(),
+                        player["player_name"].ToString(),
+                        player["player_number"].ToString()
+                    ));
+                }
+
+                CurrentTeam = new Team(
+                    team["team_key"].ToString(),
+                    team["team_name"].ToString(),
+                    team["team_badge"].ToString(),
+                    teamPlayers
+                );
             }
             catch (Exception e)
             {
@@ -74,5 +83,10 @@ namespace CursValutar
             }
         }
 
+        private void PlayerTapped(object sender, EventArgs e)
+        {
+            var clickedPlayerKey= ((TappedEventArgs)e).Parameter.ToString();
+            DisplayAlert(clickedPlayerKey, "Hello", "Cancel");
+        }
     }
 }

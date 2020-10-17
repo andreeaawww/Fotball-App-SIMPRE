@@ -4,9 +4,36 @@
              x:Class="CursValutar.TeamDetails">
     <ContentPage.Content>
         <StackLayout x:Name="DisplayedTeam">
-            <Label Text="HEEEELLLOOOOO"
+            <Label Text="{Binding teamName}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+            <ListView x:Name="DisplayedPlayers">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout
+                                Orientation="Horizontal"
+                                HorizontalOptions="FillAndExpand">
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Tapped="PlayerTapped"
+                                        CommandParameter="{Binding playerKey}"/>
+                                </StackLayout.GestureRecognizers>
+                                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding playerName}"
+                                       HorizontalOptions="FillAndExpand"
+                                       FontSize="Large"/>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                                    <Label Text="{Binding playerNumber}"
+                                       HorizontalOptions="FillAndExpand"
+                                       FontSize="Large"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
