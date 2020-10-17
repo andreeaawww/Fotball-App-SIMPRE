@@ -9,7 +9,7 @@ namespace CursValutar
         public App()
         {
             InitializeComponent();
-            MainPage = new AppShell();
+            MainPage = new WelcomePage();
             Routing.RegisterRoute("Setari", typeof(Setari));
         }
 

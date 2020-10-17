@@ -1,8 +1,7 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Net;
 
 namespace CursValutar.Services
 {
@@ -18,59 +17,59 @@ namespace CursValutar.Services
             restClient = new RestClient();
         }
 
-        public dynamic GetCountries()
+        public IRestResponse GetCountries()
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_countries&APIkey={ApiKey}", Method.GET);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_countries&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var response = restClient.Execute(request);
 
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
+            return response;
         }
 
-        public dynamic GetAllLeagues()
+        public IRestResponse GetAllLeagues(string country)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&APIkey={ApiKey}", Method.GET);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var response = restClient.Execute(request);
 
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
+            return response;
         }
 
-        public dynamic GetLeagueByName(string country)
+        public IRestResponse GetLeagueByName(string country)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&country_name={country}&APIkey={ApiKey}", Method.GET);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_leagues&country_name={country}&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var response = restClient.Execute(request);
 
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
+            return response;
         }
 
-        public dynamic GetTeamsByLeagueId(string leagueId)
+        public IRestResponse GetTeamsByLeagueId(string leagueId)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_teams&league_id={leagueId}&APIkey={ApiKey}", Method.GET);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_teams&league_id={leagueId}&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var response = restClient.Execute(request);
 
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
+            return response;
         }
 
-        public dynamic GetPlayerData(string playerName)
+        public IRestResponse GetPlayerData(string playerName)
         {
-            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_players&player_name=={playerName}&APIkey={ApiKey}", Method.GET);
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_players&player_name=={playerName}&APIkey={ApiKey}", Method.POST);
 
             request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
 
             var response = restClient.Execute(request);
 
-            return JsonConvert.DeserializeObject<dynamic>(response.Content);
+            return response;
         }
 
     }
