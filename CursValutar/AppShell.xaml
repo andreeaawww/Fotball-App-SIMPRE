@@ -13,7 +13,7 @@
             <local:CountryPage/>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="League Teams">
+    <FlyoutItem Title="Premier League Teams">
         <ShellContent>
             <local:TeamsPage>
                 <x:Arguments>

@@ -53,6 +53,8 @@ namespace CursValutar
 
                     do
                     {
+                        new CountryPage();
+
                         response = apiService.GetCountries();
 
                     } while (response.StatusCode == HttpStatusCode.OK);
