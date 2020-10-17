@@ -50,6 +50,16 @@ namespace CursValutar.Services
 
             return response;
         }
+        public IRestResponse GetTeamsDetailsByTeamId(string teamId)
+        {
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_teams&team_id={teamId}&APIkey={ApiKey}", Method.POST);
+
+            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+
+            var response = restClient.Execute(request);
+
+            return response;
+        }
 
         public IRestResponse GetPlayerData(string playerName)
         {

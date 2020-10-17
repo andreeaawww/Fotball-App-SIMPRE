@@ -71,8 +71,8 @@ namespace CursValutar
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            var clickedTeamKey = ((TappedEventArgs)e).Parameter;
-            DisplayAlert("TODO:", "Redirect to" + clickedTeamKey.ToString() + "team details Page", "Cancel");
+            var clickedTeamKey = ((TappedEventArgs)e).Parameter.ToString();
+            Navigation.PushAsync(new TeamDetails(clickedTeamKey));
         }
     }
 }
