@@ -72,6 +72,16 @@ namespace CursValutar.Services
             return response;
         }
 
+        public IRestResponse GetStandings(string leagueId)
+        {
+            var request = new RestRequest($"https://apiv2.apifootball.com/?action=get_standings&league_id={leagueId}&APIkey={ApiKey}", Method.POST);
+
+            request.OnBeforeDeserialization = resp => { resp.ContentType = "application/json"; };
+
+            var response = restClient.Execute(request);
+
+            return response;
+        }
     }
 }
 

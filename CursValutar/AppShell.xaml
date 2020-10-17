@@ -37,4 +37,9 @@
             <local:SavedPlayers/>
         </ShellContent>
     </FlyoutItem>
+    <FlyoutItem Title="Standings">
+        <ShellContent>
+            <local:StandingsPage/>
+        </ShellContent>
+    </FlyoutItem>
 </Shell>
