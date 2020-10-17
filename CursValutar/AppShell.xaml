@@ -15,6 +15,15 @@
             <local:CountryPage/>
         </ShellContent>
     </FlyoutItem>
+    <FlyoutItem Title="Premier League Teams">
+        <ShellContent>
+            <local:TeamsPage>
+                <x:Arguments>
+                    <x:String>148</x:String>
+                </x:Arguments>
+            </local:TeamsPage>
+        </ShellContent>
+    </FlyoutItem>
     <FlyoutItem Title="Istoric">
         <ShellContent>
             <local:Istoric/>
