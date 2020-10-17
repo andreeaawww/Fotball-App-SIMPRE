@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CursValutar.StandingsPage"
+             xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+             Title="Standings">
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker x:Name="LeaguePicker" Title="Select a league..." SelectedIndexChanged="OnPickerSelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Premier League</x:String>
+                        <x:String>Ligue 1</x:String>
+                        <x:String>Bundesliga</x:String>
+                        <x:String>La Liga</x:String>
+                        <x:String>Serie A</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <charts:ChartView x:Name="ChartViewStandings"
+                     VerticalOptions="FillAndExpand"
+                     HorizontalOptions="FillAndExpand"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
