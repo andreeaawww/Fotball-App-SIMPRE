@@ -1,4 +1,5 @@
 ﻿using CursValutar.Services;
+using CursValutar.Views;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -37,7 +38,7 @@ namespace CursValutar
 
         private void ViewLeaguesButtonHandler(object sender, EventArgs e)
         {
-            //DisplayAlert("dialog", "hei lucian");
+            //await Navigation.PushAsync(new LeaguesPage());
         }
 
         private async Task InitializeCountriesAsync()
@@ -50,7 +51,20 @@ namespace CursValutar
                 {
                     await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
 
-                    new CountryPage();
+                    do
+                    {
+                        new CountryPage();
+
+                        response = apiService.GetCountries();
+
+                    } while (response.StatusCode == HttpStatusCode.OK);
+
+                    if(response.StatusCode == HttpStatusCode.OK)
+                        foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
+                        {
+                            Countries.Add(country["country_name"].ToString());
+                        }
+
                 }
                 else 
                 {

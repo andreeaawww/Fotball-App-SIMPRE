@@ -4,25 +4,20 @@
              xmlns:local="clr-namespace:CursValutar"
              x:Class="CursValutar.AppShell">
 
-    <FlyoutItem Title="CursValutar">
+
+    <FlyoutItem Title="Despre">
         <ShellContent>
-            <local:MainPage>
-            </local:MainPage>
+            <local:Despre/>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="ConvertorPage">
+    <FlyoutItem Title="CountryPage">
         <ShellContent>
-            <local:ConvertorPage/>
+            <local:CountryPage/>
         </ShellContent>
     </FlyoutItem>
     <FlyoutItem Title="Istoric">
         <ShellContent>
             <local:Istoric/>
-        </ShellContent>
-    </FlyoutItem>
-      <FlyoutItem Title="Despre">
-        <ShellContent>
-            <local:Despre/>
         </ShellContent>
     </FlyoutItem>
 </Shell>

@@ -7,27 +7,17 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace CursValutar
+namespace CursValutar.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ConvertorPage : ContentPage
+    public partial class LeaguesPage : ContentPage
     {
-        
-        public ConvertorPage()
+
+        public LeaguesPage()
         {
             InitializeComponent();
-        }
 
-
-        protected override async void OnAppearing()
-        {
-            
-        }
-        private void Button_Clicked(object sender, EventArgs e)
-        {
            
-
-            
         }
     }
 }

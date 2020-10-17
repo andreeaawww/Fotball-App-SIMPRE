@@ -17,9 +17,9 @@ namespace CursValutar
             InitializeComponent();
         }
 
-        public async void WelcomeHandler(object sender, EventArgs e)
+        public void WelcomeHandler(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new NavigationPage(new CountryPage());
+            Application.Current.MainPage = new AppShell();
         }
 
     }

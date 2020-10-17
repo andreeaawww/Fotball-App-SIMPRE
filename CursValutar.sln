@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursValutar.Android", "Curs
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursValutar.iOS", "CursValutar.iOS\CursValutar.iOS.csproj", "{C1D6792B-8F6F-4053-9F5B-E8E86E798C5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursValutar", "CursValutar\CursValutar.csproj", "{861B15C4-58EB-4067-A0E3-B09964EA0A3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CursValutar", "CursValutar\CursValutar.csproj", "{861B15C4-58EB-4067-A0E3-B09964EA0A3A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

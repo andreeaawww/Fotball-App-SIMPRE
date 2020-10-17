@@ -5,11 +5,11 @@
              Title="Despre">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Curs valutar"
+            <Label Text="Football App"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
-            <Image Source="Imagine.png"/>
-            <Label Text="Ana" TextColor="Red" FontSize="Large"
+            <Image Source=""/>
+            <Label Text="PDM " TextColor="Red" FontSize="Large"
                    VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
         </StackLayout>

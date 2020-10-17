@@ -10,7 +10,6 @@ namespace CursValutar
         {
             InitializeComponent();
             MainPage = new WelcomePage();
-            Routing.RegisterRoute("Setari", typeof(Setari));
         }
 
         protected override void OnStart()

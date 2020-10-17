@@ -10,9 +10,13 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout>
-                            <Label Text="{Binding .}"/>
-                            <Button Text="View Leagues" Clicked="ViewLeaguesButtonHandler"/>
+                        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                                <Label Text="{Binding .}" HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
+                                <Button Text="View Leagues" HorizontalOptions="FillAndExpand" Clicked="ViewLeaguesButtonHandler" />
+                            </StackLayout>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
