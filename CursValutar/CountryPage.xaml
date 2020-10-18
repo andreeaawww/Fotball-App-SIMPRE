@@ -3,10 +3,12 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursValutar.CountryPage"
              Title="Countries"
-             Padding="0, 20, 0, 20">
+             Padding="0, 15, 0, 15">
     <ContentPage.Content>
         <ListView x:Name="countriesListView"
-              HasUnevenRows="True" IsVisible="True" ItemSelected="SelectedItem">
+              HasUnevenRows="True" IsVisible="True" ItemSelected="SelectedItem" IsPullToRefreshEnabled="True"
+           RefreshCommand="{Binding RefreshCommand}"
+           IsRefreshing="{Binding IsRefreshing}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -22,6 +24,10 @@
                                        HorizontalOptions="EndAndExpand"
                                        VerticalOptions="FillAndExpand"
                                        Aspect="AspectFill"
+                                       WidthRequest="45"
+                                       HeightRequest="40"
+                                       MinimumHeightRequest="40"
+                                       MinimumWidthRequest="45"
                                        />
                             </StackLayout>
                         </StackLayout>

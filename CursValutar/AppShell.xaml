@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:CursValutar"
-             x:Class="CursValutar.AppShell">
+             xmlns:local="clr-namespace:CursValutar" xmlns:local1="clr-namespace:CursValutar.Views"
+       x:Class="CursValutar.AppShell">
     <FlyoutItem Title="Football Application">
         <ShellContent>
             <local:AboutPage/>
@@ -20,6 +20,11 @@
                     <x:String>148</x:String>
                 </x:Arguments>
             </local:TeamsPage>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Search Player">
+        <ShellContent>
+            <local1:SearchPlayer/>
         </ShellContent>
     </FlyoutItem>
     <FlyoutItem Title="Save Favourite Players">

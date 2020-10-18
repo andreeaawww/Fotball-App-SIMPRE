@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursValutar.AboutPage"
-             Title="Fotball Application"
+             Title="Football Application"
              BackgroundImageSource="https://i.pinimg.com/originals/77/e9/91/77e991d4784bc56f262d4d3715d35bd0.jpg">
     <ContentPage.Content>
         <StackLayout>

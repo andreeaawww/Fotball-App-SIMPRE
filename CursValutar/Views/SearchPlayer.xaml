@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CursValutar.Views.SearchPlayer"
+             Title="Search Player By Name">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="(e.g. Ronaldo Cristiano)"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="18"
+                FontAttributes="Bold" />
+            <Entry Placeholder="Insert player name..."
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="1"
+                   Grid.Column="0"
+                   x:Name="PlayerNameInput"
+                   Keyboard="Text"
+                   FontAttributes="Italic"/>
+            <Button Text="Search"
+                    FontAttributes="Bold"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   Grid.Row="4"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   BackgroundColor="Teal"
+                   Clicked="Button_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Net;
 
@@ -49,27 +50,38 @@ namespace CursValutar
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    await DisplayAlert("Ups! We hit an error", "Server is not responding", "Retry");
+                    var answer = await DisplayAlert("Ups!Server is not responding!", "Do you wantt to retry?", "Yes", "No");
 
-                    do
+                    if (answer == true)
                     {
-                        new CountryPage();
-
-                        response = apiService.GetCountries();
-
-                    } while (response.StatusCode == HttpStatusCode.OK);
-
-                    if (response.StatusCode == HttpStatusCode.OK)
-                    {
-                        foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
+                        do
                         {
-                            Countries.Add(new Country
+                            response = apiService.GetCountries();
+
+                            if (response.StatusCode == HttpStatusCode.OK)
                             {
-                                CountryName = country["country_name"].ToString(),
-                                CountryId = country["country_id"].ToString(),
-                                CountryFlag = country["country_logo"].ToString()
-                            });
-                        }
+                                foreach (var country in JsonConvert.DeserializeObject<JArray>(response.Content))
+                                {
+                                    Countries.Add(new Country
+                                    {
+                                        CountryName = country["country_name"].ToString(),
+                                        CountryId = country["country_id"].ToString(),
+                                        CountryFlag = country["country_logo"].ToString()
+                                    });
+                                }
+
+                                countriesListView.IsPullToRefreshEnabled = true;
+
+                                countriesListView.RefreshCommand = new Command(() =>
+                                {
+                                    countriesListView.ItemsSource = Countries;
+                                    countriesListView.IsRefreshing = false;
+                                });
+
+                                break;
+                            }
+
+                        } while (response.StatusCode == HttpStatusCode.OK);
                     }
                 }
                 else 

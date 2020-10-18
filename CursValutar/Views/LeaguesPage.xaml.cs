@@ -51,25 +51,39 @@ namespace CursValutar.Views
 
                 if (response.StatusCode != HttpStatusCode.OK)
                 {
-                    do
+                    var answer = await DisplayAlert("Ups! The server is not responding!", "Do you wantt to retry?", "Yes", "No");
+
+                    if (answer == true)
                     {
-                        new LeaguesPage(CountryId);
-
-                        response = apiService.GetCountries();
-
-                    } while (response.StatusCode == HttpStatusCode.OK);
-
-                    if (response.StatusCode == HttpStatusCode.OK)
-                        foreach (var league in JsonConvert.DeserializeObject<JArray>(response.Content))
+                        do
                         {
-                            Leagues.Add(new League()
-                            {
-                                LeagueName = league["league_name"].ToString(),
-                                LeagueFlag = league["league_logo"].ToString(),
-                                LeagueId = league["league_id"].ToString()
-                            });
-                        }
+                            response = apiService.GetAllLeagues(Int32.Parse(CountryId));
 
+                            if (response.StatusCode == HttpStatusCode.OK)
+                            {
+                                foreach (var league in JsonConvert.DeserializeObject<JArray>(response.Content))
+                                {
+                                    Leagues.Add(new League()
+                                    {
+                                        LeagueName = league["league_name"].ToString(),
+                                        LeagueFlag = league["league_logo"].ToString(),
+                                        LeagueId = league["league_id"].ToString()
+                                    });
+                                }
+
+                                leaguesListView.IsPullToRefreshEnabled = true;
+
+                                leaguesListView.RefreshCommand = new Command(() =>
+                                {
+                                    leaguesListView.ItemsSource = Leagues;
+                                    leaguesListView.IsRefreshing = false;
+                                });
+
+                                break;
+                            }
+
+                        } while (response.StatusCode == HttpStatusCode.OK);
+                    }
                 }
                 else
                 {
