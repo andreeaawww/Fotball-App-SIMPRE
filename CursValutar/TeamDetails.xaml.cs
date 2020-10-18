@@ -66,8 +66,12 @@ namespace CursValutar
                     teamPlayers.Add(new TeamPlayer(
                         player["player_key"].ToString(),
                         player["player_name"].ToString(),
-                        player["player_number"].ToString()
-                    ));
+                        player["player_number"].ToString(),
+                        player["player_country"].ToString(),
+                        player["player_type"].ToString(),
+                        player["player_age"].ToString(),
+                        player["player_match_played"].ToString()
+                        ));
                 }
 
                 CurrentTeam = new Team(
@@ -76,6 +80,10 @@ namespace CursValutar
                     team["team_badge"].ToString(),
                     teamPlayers
                 );
+
+                CurrentTeam.computeAveragePlayerAge();
+                CurrentTeam.computeTotalMatchPlayed();
+
             }
             catch (Exception e)
             {

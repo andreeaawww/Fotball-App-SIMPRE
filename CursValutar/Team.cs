@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CursValutar
 {
@@ -10,6 +11,39 @@ namespace CursValutar
         private List<TeamPlayer> teamPlayers { get; set; }
         public List<TeamPlayer> getListOfPlayers() {
             return this.teamPlayers;
+        }
+        public float averagePlayerAge { get; set; }
+
+        public float totalMatchesPlayed { get; set; }
+
+        public void computeTotalMatchPlayed()
+        {
+            int playerCount = this.teamPlayers.Count;
+            if (playerCount == 0)
+            {
+                this.totalMatchesPlayed = 0;
+                return;
+            }
+            int sum = 0;
+            foreach (TeamPlayer teamPlayer in this.teamPlayers)
+            {
+                this.totalMatchesPlayed += Int32.Parse(teamPlayer.playerMatchPlayed);
+            }
+        }
+        public void computeAveragePlayerAge()
+        {
+            int playerCount = this.teamPlayers.Count;
+            if(playerCount == 0)
+            {
+                this.averagePlayerAge = 0;
+                return;
+            }
+            int sum = 0;
+            foreach(TeamPlayer teamPlayer in this.teamPlayers)
+            {
+                sum += Int32.Parse(teamPlayer.playerAge);
+            }
+            this.averagePlayerAge = sum / playerCount;
         }
         public Team(string teamKey, string teamName, string teamBadgeURL) {
             this.teamKey = teamKey;

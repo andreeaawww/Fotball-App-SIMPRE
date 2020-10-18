@@ -1,12 +1,35 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CursValutar.TeamDetails">
+             x:Class="CursValutar.TeamDetails"
+             Title="Team Details">
     <ContentPage.Content>
         <StackLayout x:Name="DisplayedTeam">
+            <Image Source="{Binding teamBadgeURL}"
+                   AbsoluteLayout.LayoutFlags="All"
+                   HorizontalOptions="Center" 
+                   VerticalOptions="Center"
+                   Aspect="AspectFill"/>
             <Label Text="{Binding teamName}"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="24"
+                TextColor="#228C22"
+                FontAttributes="Bold"/>
+            <Label Text="Total matches played:"/>
+            <Label Text="{Binding totalMatchesPlayed}"
+                FontSize="Medium"
+                TextColor="#228C22"
+                FontAttributes="Bold"/>
+            <Label Text="Average player age:"/>
+            <Label Text="{Binding averagePlayerAge}"
+                FontSize="Medium"
+                TextColor="#228C22"
+                FontAttributes="Bold"/>
+            <Label Text="Players"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"/>
             <ListView x:Name="DisplayedPlayers">
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -22,11 +45,11 @@
                                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding playerName}"
                                        HorizontalOptions="FillAndExpand"
-                                       FontSize="Large"/>
+                                       FontSize="Medium"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding playerNumber}"
-                                       HorizontalOptions="FillAndExpand"
+                                       HorizontalTextAlignment="End" 
                                        FontSize="Large"/>
                                 </StackLayout>
                             </StackLayout>
