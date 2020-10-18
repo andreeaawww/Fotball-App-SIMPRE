@@ -24,6 +24,7 @@ namespace CursValutar
             if (playerCount == 0)
             {
                 this.totalGoalsScored = 0;
+                return;
             }
             foreach (TeamPlayer teamPlayer in this.teamPlayers)
             {
@@ -37,6 +38,7 @@ namespace CursValutar
             if (playerCount == 0)
             {
                 this.totalMatchesPlayed = 0;
+                return;
             }
             foreach (TeamPlayer teamPlayer in this.teamPlayers)
             {
@@ -49,6 +51,7 @@ namespace CursValutar
             if(playerCount == 0)
             {
                 this.averagePlayerAge = 0;
+                return;
             }
             int sum = 0;
             foreach(TeamPlayer teamPlayer in this.teamPlayers)

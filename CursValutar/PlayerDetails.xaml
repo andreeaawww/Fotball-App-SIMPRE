@@ -1,12 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CursValutar.PlayerDetails">
+             x:Class="CursValutar.PlayerDetails"
+             Title="Player Details">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
+        <StackLayout x:Name="DisplayedPlayer">
+            <Label Text="
+                   
+                   "/>
+            <Label Text="{Binding playerName}"
+                VerticalOptions="StartAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="30"
+                TextColor="#228C22"
+                FontAttributes="Bold"/>
+            <Label Text="Position:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerType}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Number:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerNumber}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Country:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerCountry}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Age:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerAge}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Number of matches played:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerMatchesPlayed}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Number of goals scored:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding playerGoals}"
+                FontSize="Medium"
+                TextColor="DodgerBlue"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Number of YELLOW cards received:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding yellowCards}"
+                FontSize="Medium"
+                TextColor="#FFCB15"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
+            <Label Text="Number of RED cards received:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand"/>
+            <Label Text="{Binding redCards}"
+                FontSize="Medium"
+                TextColor="Red"
+                FontAttributes="Bold"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

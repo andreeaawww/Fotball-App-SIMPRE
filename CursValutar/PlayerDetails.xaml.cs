@@ -32,6 +32,8 @@ namespace CursValutar
 
             AsyncGetPlayerData(playerName);
 
+            DisplayedPlayer.BindingContext = CurrentPlayer;
+
         }
 
         private async Task AsyncGetPlayerData(string playerName)
