@@ -33,7 +33,7 @@ namespace CursValutar
 
             if (!playerName.HasValue())
             {
-                PlayerNameInput.Text = "Please insert a player name!";
+                DisplayAlert("Error!", "Please enter a player name!", "OK");
             }
             else
             {

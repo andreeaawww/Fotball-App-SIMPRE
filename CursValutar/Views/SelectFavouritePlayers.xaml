@@ -1,24 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CursValutar.SelectFavouritePlayers">
+             x:Class="CursValutar.SelectFavouritePlayers"
+             Title="Save your favourite players">
     <ContentPage.Content>
-        <Grid>
-            <Label>Insert a player's name below (last name + first name) (e.g. Ronaldo Cristiano)</Label>
+        <!--<Grid>-->
+        <StackLayout>
+            <Label Text="Insert a player's name below (last name + first name) (e.g. Ronaldo Cristiano)"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" 
+                FontSize="18"
+                FontAttributes="Bold" />
             <Entry Placeholder="Insert player name..."
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" 
                    Grid.Row="1"
                    Grid.Column="0"
                    x:Name="PlayerNameInput"
-                   Keyboard="Text"/>
+                   Keyboard="Text"
+                   FontAttributes="Italic"/>
             <Button Text="Save Player Data"
+                    FontAttributes="Bold"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" 
                    Grid.Row="4"
                    Grid.Column="0"
                    Grid.ColumnSpan="2"
+                   BackgroundColor="Teal"
                    Clicked="Button_Clicked"/>
-        </Grid>
+        </StackLayout>
+        <!--</Grid>-->
     </ContentPage.Content>
 </ContentPage>
