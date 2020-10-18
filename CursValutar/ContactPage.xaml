@@ -6,11 +6,21 @@
              Title="Project Team">
     <ContentPage.Content>
         <StackLayout>
-           <Label Text="Team that worked on this project"
-                />
-            <charts:ChartView x:Name="chartViewIstoric"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"/>
+            <Label Text="Team that worked on this project" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            <ListView>
+                <ListView.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Posirca Andreea</x:String>
+                        <x:String>Soare Diana</x:String>
+                        <x:String>Traistaru Lucian</x:String>
+                        <x:String>Sfetcu Silviu</x:String>
+                    </x:Array>
+                </ListView.ItemsSource>
+            </ListView>
+            <Label Text="See the project code on GitHub" HorizontalOptions="CenterAndExpand"  VerticalOptions="CenterAndExpand" FontSize="Large"/>
+            <Button Text="Open GitHub"  VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" 
+                    Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -22,11 +22,6 @@
             </local:TeamsPage>
         </ShellContent>
     </FlyoutItem>
-    <FlyoutItem Title="Contact">
-        <ShellContent>
-            <local:ContactPage/>
-        </ShellContent>
-    </FlyoutItem>
     <FlyoutItem Title="Save Favourite Players">
         <ShellContent>
             <local:SelectFavouritePlayers/>
@@ -40,6 +35,11 @@
     <FlyoutItem Title="Standings">
         <ShellContent>
             <local:StandingsPage/>
+        </ShellContent>
+    </FlyoutItem>
+    <FlyoutItem Title="Contact">
+        <ShellContent>
+            <local:ContactPage/>
         </ShellContent>
     </FlyoutItem>
 </Shell>
