@@ -32,5 +32,10 @@ namespace CursValutar
         {
             return sqliteConnection.Query<Player>("SELECT * FROM Players");
         }
+
+        public void UpdatePlayerData(Player player)
+        {
+            sqliteConnection.Update(player);
+        }
     }
 }

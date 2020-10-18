@@ -46,19 +46,35 @@ namespace CursValutar
                 }
                 else
                 {
-                    var item = JsonConvert.DeserializeObject<JArray>(playerData.Content);
-
-                    var player = new Player
+                    try
                     {
-                        PlayerName = item[0]["player_name"].ToString(),
-                        Age = int.Parse(item[0]["player_age"].ToString()),
-                        Nationality = item[0]["player_country"].ToString(),
-                        TeamName = item[0]["team_name"].ToString()
-                    };
+                        var item = JsonConvert.DeserializeObject<JArray>(playerData.Content);
 
-                    dbUtils.AddPlayer(player);
+                        var player = new Player
+                        {
+                            PlayerName = item[0]["player_name"].ToString(),
+                            Age = int.Parse(item[0]["player_age"].ToString()),
+                            Nationality = item[0]["player_country"].ToString(),
+                            TeamName = item[0]["team_name"].ToString()
+                        };
 
-                    DisplayAlert("Success!", "Player's data has been saved.", "OK");
+                        var savedPlayers = dbUtils.GetSavedPlayers();
+
+                        if (savedPlayers.Any(x => x.PlayerName == player.PlayerName))
+                        {
+                            player.PlayerId = savedPlayers.Where(x => x.PlayerName == player.PlayerName).Select(x => x.PlayerId).FirstOrDefault();
+                            dbUtils.UpdatePlayerData(player);
+                        }
+                        else
+                        {
+                            dbUtils.AddPlayer(player);
+                        }
+
+                        DisplayAlert("Success!", "Player's data has been saved/updated.", "OK");
+                    } catch(Exception error)
+                    {
+                        DisplayAlert("Error!", "The player could not be found!", "OK");
+                    }
                 }
             }
         }
