@@ -70,7 +70,10 @@ namespace CursValutar
                         player["player_country"].ToString(),
                         player["player_type"].ToString(),
                         player["player_age"].ToString(),
-                        player["player_match_played"].ToString()
+                        player["player_match_played"].ToString(),
+                        player["player_goals"].ToString(),
+                        player["player_yellow_cards"].ToString(),
+                        player["player_red_cards"].ToString()
                         ));
                 }
 
@@ -83,6 +86,7 @@ namespace CursValutar
 
                 CurrentTeam.computeAveragePlayerAge();
                 CurrentTeam.computeTotalMatchPlayed();
+                CurrentTeam.computeTotalGoals();
 
             }
             catch (Exception e)
@@ -93,8 +97,9 @@ namespace CursValutar
 
         private void PlayerTapped(object sender, EventArgs e)
         {
-            var clickedPlayerKey= ((TappedEventArgs)e).Parameter.ToString();
-            DisplayAlert(clickedPlayerKey, "Hello", "Cancel");
+            var clickedPlayerName= ((TappedEventArgs)e).Parameter.ToString();
+            //DisplayAlert(clickedPlayerName, "Hello", "Cancel");
+            Navigation.PushAsync(new PlayerDetails(clickedPlayerName));
         }
     }
 }

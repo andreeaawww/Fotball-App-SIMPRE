@@ -21,6 +21,11 @@
                 FontSize="Medium"
                 TextColor="#228C22"
                 FontAttributes="Bold"/>
+            <Label Text="Total goals scored:"/>
+            <Label Text="{Binding totalGoalsScored}"
+                FontSize="Medium"
+                TextColor="#228C22"
+                FontAttributes="Bold"/>
             <Label Text="Average player age:"/>
             <Label Text="{Binding averagePlayerAge}"
                 FontSize="Medium"
@@ -40,7 +45,7 @@
                                 <StackLayout.GestureRecognizers>
                                     <TapGestureRecognizer
                                         Tapped="PlayerTapped"
-                                        CommandParameter="{Binding playerKey}"/>
+                                        CommandParameter="{Binding playerName}"/>
                                 </StackLayout.GestureRecognizers>
                                 <StackLayout Orientation="Vertical"  HorizontalOptions="FillAndExpand">
                                     <Label Text="{Binding playerName}"

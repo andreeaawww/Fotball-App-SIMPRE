@@ -16,15 +16,28 @@ namespace CursValutar
 
         public float totalMatchesPlayed { get; set; }
 
+        public float totalGoalsScored { get; set; }
+
+        public void computeTotalGoals()
+        {
+            int playerCount = this.teamPlayers.Count;
+            if (playerCount == 0)
+            {
+                this.totalGoalsScored = 0;
+            }
+            foreach (TeamPlayer teamPlayer in this.teamPlayers)
+            {
+                this.totalGoalsScored += Int32.Parse(teamPlayer.playerGoals);
+            }
+        }
+
         public void computeTotalMatchPlayed()
         {
             int playerCount = this.teamPlayers.Count;
             if (playerCount == 0)
             {
                 this.totalMatchesPlayed = 0;
-                return;
             }
-            int sum = 0;
             foreach (TeamPlayer teamPlayer in this.teamPlayers)
             {
                 this.totalMatchesPlayed += Int32.Parse(teamPlayer.playerMatchPlayed);
@@ -36,7 +49,6 @@ namespace CursValutar
             if(playerCount == 0)
             {
                 this.averagePlayerAge = 0;
-                return;
             }
             int sum = 0;
             foreach(TeamPlayer teamPlayer in this.teamPlayers)

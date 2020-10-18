@@ -2,20 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CursValutar.AboutPage"
-             Title="Fotball Application">
+             Title="Fotball Application"
+             BackgroundImageSource="https://i.pinimg.com/originals/77/e9/91/77e991d4784bc56f262d4d3715d35bd0.jpg">
     <ContentPage.Content>
         <StackLayout>
-        <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
-            <Image x:Name="teamBadge"
-                                       Source="https://img.posterlounge.co.uk/img/products/50000/43826/43826_poster_l.jpg"
-                                       HorizontalOptions="CenterAndExpand"
-                                       Aspect="AspectFill"/>
-        </StackLayout>
             <Label Text=" Countries | Leagues | Teams | More"
                 VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" FontSize="Large"/>
-            <Label Text="Project PDM - 2020 SIMPRE " TextColor="Black" FontSize="Large"
-                   VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" FontSize="Large" TextColor="White"/>
+            <Label Text="Project PDM - 2020 SIMPRE " TextColor="White" FontSize="Large"
+                   VerticalOptions="EndAndExpand"
                    HorizontalOptions="CenterAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
